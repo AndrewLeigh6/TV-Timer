@@ -6,7 +6,6 @@ class TvTimer extends Component {
   render() {
     return (
       <Layout>
-        <p>Hello world</p>
         <TypeSelector />
       </Layout>
     );
