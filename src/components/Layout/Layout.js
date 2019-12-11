@@ -2,11 +2,11 @@ import React from "react";
 import classes from "./Layout.module.css";
 import Logo from "../Logo/Logo";
 
-const Layout = () => {
+const Layout = props => {
   return (
     <div className={classes.Layout}>
       <Logo />
-      <p> I am the layout </p>
+      {props.children}
     </div>
   );
 };
