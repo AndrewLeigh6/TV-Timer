@@ -6,6 +6,7 @@ const TypeSelector = () => {
   return (
     <div className={classes.TypeSelector}>
       <div className={classes.Container}>
+        <p>I want to watch a...</p>
         <Button type="primary">Film</Button>
         <Button type="secondary">TV Series</Button>
       </div>
