@@ -1,0 +1,10 @@
+.Input,
+.Input::placeholder {
+  font-family: "Open Sans";
+  font-size: 2.4rem;
+  color: #1a202c;
+}
+
+.Input::placeholder {
+  color: #2d3748;
+}
