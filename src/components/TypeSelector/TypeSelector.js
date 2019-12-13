@@ -7,8 +7,12 @@ const TypeSelector = () => {
     <div className={classes.TypeSelector}>
       <div className={classes.Container}>
         <p>I want to watch a...</p>
-        <Button type="primary">Film</Button>
-        <Button type="secondary">TV Series</Button>
+        <Button type="primary" size="large" maxWidth>
+          Film
+        </Button>
+        <Button type="secondary" size="large" maxWidth>
+          TV Series
+        </Button>
       </div>
     </div>
   );
