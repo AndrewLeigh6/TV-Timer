@@ -1,6 +1,7 @@
 .Layout {
   background-color: #2d3748;
-  height: 100vh;
+  min-height: 100vh;
   width: auto;
   text-align: center;
+  padding-bottom: 5rem;
 }
