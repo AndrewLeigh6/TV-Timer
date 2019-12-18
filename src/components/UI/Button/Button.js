@@ -56,8 +56,8 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  type: PropTypes.oneOf(["primary", "secondary"]),
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  type: PropTypes.oneOf(["primary", "secondary"]).isRequired,
+  size: PropTypes.oneOf(["small", "medium", "large"]).isRequired,
   form: PropTypes.bool,
   maxWidth: PropTypes.bool
 };

@@ -1,0 +1,19 @@
+.MediaDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.MediaDetails:not(:last-child) {
+  margin-right: 10rem;
+}
+
+.Poster {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.Title {
+  font-size: 2.4rem;
+  color: #f7fafc;
+  margin: 2rem 0 4rem 0;
+}
