@@ -1,6 +1,6 @@
 .SearchBar {
   max-width: 55rem;
-  margin: 0 auto;
+  margin: 0 auto 10rem auto;
 }
 
 .SearchBar form {
