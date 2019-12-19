@@ -3,4 +3,9 @@
   justify-content: space-between;
   max-width: 120rem;
   margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.SearchResults > div {
+  flex: 0 0 25%;
 }

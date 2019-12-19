@@ -3,10 +3,10 @@ import Button from "../UI/Button/Button";
 import classes from "./SearchBar.module.css";
 import Input from "../UI/Input/Input";
 
-const SearchBar = () => {
+const SearchBar = props => {
   return (
     <div className={classes.SearchBar}>
-      <form>
+      <form onSubmit={props.searchHandler}>
         <Input placeholder="e.g. Star Wars" />
         <Button type="primary" size="medium" form>
           Find

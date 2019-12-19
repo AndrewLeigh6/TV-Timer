@@ -2,11 +2,14 @@ import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 
-const MediaSelector = () => {
+const MediaSelector = props => {
   return (
     <div>
-      <SearchBar />
-      <SearchResults />
+      <SearchBar searchHandler={props.searchHandler} />
+      <SearchResults
+        films={props.films}
+        getPosterBaseURL={props.getPosterBaseURL}
+      />
     </div>
   );
 };
