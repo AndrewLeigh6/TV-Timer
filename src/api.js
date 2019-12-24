@@ -16,7 +16,7 @@ api.interceptors.request.use(request => {
   request.params = {
     ...request.params,
     language: "en-US",
-    include_adult: "true",
+    include_adult: "false",
     page: "1"
   };
   return request;

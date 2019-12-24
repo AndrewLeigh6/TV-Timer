@@ -30,9 +30,12 @@ class TvTimer extends Component {
     return null;
   };
 
-  searchHandler = e => {
-    e.preventDefault();
-    api.findFilms("star wars").then(films => {
+  searchHandler = event => {
+    event.preventDefault();
+
+    const searchValue = event.target.elements[0].value;
+
+    api.findFilms(searchValue).then(films => {
       this.setState({ films: films.data.results });
     });
   };
