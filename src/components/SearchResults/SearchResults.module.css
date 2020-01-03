@@ -1,11 +1,10 @@
 .SearchResults {
-  display: flex;
-  justify-content: space-between;
   max-width: 120rem;
   margin: 0 auto;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 1000px;
 }
 
 .SearchResults > div {
-  flex: 0 0 25%;
 }
