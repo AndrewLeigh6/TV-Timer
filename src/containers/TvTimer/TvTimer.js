@@ -15,6 +15,12 @@ class TvTimer extends Component {
     api.getConfig().then(config => {
       this.setState({ config: config.data.images });
     });
+
+    // temp for testing
+    api.findFilms("star wars").then(films => {
+      this.setState({ films: films.data.results });
+      this.setEqualHeights();
+    });
   }
 
   // https://developers.themoviedb.org/3/getting-started/images
@@ -37,6 +43,25 @@ class TvTimer extends Component {
 
     api.findFilms(searchValue).then(films => {
       this.setState({ films: films.data.results });
+    });
+  };
+
+  // this is for the film name heights
+  setEqualHeights = () => {
+    const titles = document.querySelectorAll("p[class^=MediaDetails_Title]");
+
+    let largestHeight = 0;
+
+    // get tallest title
+    titles.forEach(element => {
+      if (element.clientHeight > largestHeight) {
+        largestHeight = element.clientHeight;
+      }
+    });
+
+    // set all titles to largest height
+    titles.forEach(element => {
+      element.style.height = largestHeight + "px";
     });
   };
 
