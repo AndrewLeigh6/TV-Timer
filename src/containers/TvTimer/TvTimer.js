@@ -43,6 +43,7 @@ class TvTimer extends Component {
 
     api.findFilms(searchValue).then(films => {
       this.setState({ films: films.data.results });
+      this.setEqualHeights();
     });
   };
 

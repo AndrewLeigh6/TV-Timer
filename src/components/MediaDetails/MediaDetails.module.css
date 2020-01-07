@@ -1,11 +1,6 @@
 .MediaDetails {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
-}
-
-.MediaDetails:not(:last-child) {
-  margin-right: 10rem;
 }
 
 .Poster {
