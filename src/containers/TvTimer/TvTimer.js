@@ -51,7 +51,7 @@ class TvTimer extends Component {
     const searchValue = event.target.elements[0].value;
 
     api.findFilms(searchValue).then(films => {
-      this.setState({ films: films.data.results });
+      this.loadNewMedia(films);
     });
   };
 
