@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Layout from "../../components/Layout/Layout";
-import TypeSelector from "../../components/TypeSelector/TypeSelector";
 import MediaSelector from "../../components/MediaSelector/MediaSelector";
 import api from "../../api";
+import { setEqualHeights } from "../../helpers/helpers";
 
 class TvTimer extends Component {
   state = {
@@ -18,10 +18,19 @@ class TvTimer extends Component {
 
     // temp for testing
     api.findFilms("star wars").then(films => {
-      this.setState({ films: films.data.results });
-      this.setEqualHeights();
+      this.loadNewMedia(films);
     });
+
+    // ensure we set the heights again if the window is resized
+    window.addEventListener("resize", setEqualHeights);
   }
+
+  /* we always want to re-set heights after putting
+  new films into state, so they're being grouped here */
+  loadNewMedia = films => {
+    this.setState({ films: films.data.results });
+    setEqualHeights();
+  };
 
   // https://developers.themoviedb.org/3/getting-started/images
   getPosterBaseURL = () => {
@@ -43,26 +52,6 @@ class TvTimer extends Component {
 
     api.findFilms(searchValue).then(films => {
       this.setState({ films: films.data.results });
-      this.setEqualHeights();
-    });
-  };
-
-  // this is for the film name heights
-  setEqualHeights = () => {
-    const titles = document.querySelectorAll("p[class^=MediaDetails_Title]");
-
-    let largestHeight = 0;
-
-    // get tallest title
-    titles.forEach(element => {
-      if (element.clientHeight > largestHeight) {
-        largestHeight = element.clientHeight;
-      }
-    });
-
-    // set all titles to largest height
-    titles.forEach(element => {
-      element.style.height = largestHeight + "px";
     });
   };
 
