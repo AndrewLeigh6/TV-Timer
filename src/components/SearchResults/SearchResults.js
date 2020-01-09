@@ -11,10 +11,14 @@ const SearchResults = props => {
   };
 
   const formatFilms = films => {
+    const PLACEHOLDER_POSTER_URL =
+      "https://via.placeholder.com/500x750.png?text=No+poster+available";
     return films.map(film => {
       const id = film.id;
       const title = film.title;
-      const poster = `${props.getPosterBaseURL()}/${film.poster_path}`;
+      const poster = film.poster_path
+        ? `${props.getPosterBaseURL()}/${film.poster_path}`
+        : PLACEHOLDER_POSTER_URL;
       const year = film.release_date.slice(0, 4);
 
       return (
