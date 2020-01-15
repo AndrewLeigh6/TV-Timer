@@ -7,7 +7,7 @@ const MediaSelector = props => {
     <div>
       <SearchBar searchHandler={props.searchHandler} />
       <SearchResults
-        films={props.films}
+        media={props.media}
         getPosterBaseURL={props.getPosterBaseURL}
       />
     </div>

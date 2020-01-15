@@ -6,8 +6,8 @@ import api from "../../api";
 class TvTimer extends Component {
   state = {
     config: null,
-    films: null,
-    currentFilm: null
+    media: null,
+    currentMedia: null
   };
 
   componentDidMount() {
@@ -16,13 +16,13 @@ class TvTimer extends Component {
     });
 
     // temp for testing
-    api.findFilms("avengers").then(films => {
-      this.loadNewMedia(films);
+    api.findMedia("avengers").then(media => {
+      this.loadNewMedia(media);
     });
   }
 
-  loadNewMedia = films => {
-    this.setState({ films: films.data.results });
+  loadNewMedia = media => {
+    this.setState({ media: media.data.results });
   };
 
   // https://developers.themoviedb.org/3/getting-started/images
@@ -43,8 +43,8 @@ class TvTimer extends Component {
 
     const searchValue = event.target.elements[0].value;
 
-    api.findFilms(searchValue).then(films => {
-      this.loadNewMedia(films);
+    api.findMedia(searchValue).then(media => {
+      this.loadNewMedia(media);
     });
   };
 
@@ -53,7 +53,7 @@ class TvTimer extends Component {
       <Layout>
         <MediaSelector
           searchHandler={this.searchHandler}
-          films={this.state.films}
+          media={this.state.media}
           getPosterBaseURL={this.getPosterBaseURL}
         />
       </Layout>

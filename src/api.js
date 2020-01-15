@@ -33,7 +33,7 @@ api.getConfig = () => {
 };
 
 // https://developers.themoviedb.org/3/search/search-movies
-api.findFilms = query => {
+api.findMedia = query => {
   return api.get("/search/movie", {
     params: {
       query: query
