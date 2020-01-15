@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/* if we get a 401 error again for some reason, the env
+ file has probably vanished again. just add a new one with the bearer 
+ key, it's the really long one. */
+
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   headers: {
