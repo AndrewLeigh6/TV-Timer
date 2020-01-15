@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Layout from "../../components/Layout/Layout";
 import MediaSelector from "../../components/MediaSelector/MediaSelector";
 import api from "../../api";
-import { setEqualHeights } from "../../helpers/helpers";
 
 class TvTimer extends Component {
   state = {
@@ -20,16 +19,10 @@ class TvTimer extends Component {
     api.findFilms("avengers").then(films => {
       this.loadNewMedia(films);
     });
-
-    // ensure we set the heights again if the window is resized
-    window.addEventListener("resize", setEqualHeights);
   }
 
-  /* we always want to re-set heights after putting
-  new films into state, so they're being grouped here */
   loadNewMedia = films => {
     this.setState({ films: films.data.results });
-    setEqualHeights();
   };
 
   // https://developers.themoviedb.org/3/getting-started/images

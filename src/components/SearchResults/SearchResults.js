@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import MediaDetails from "../MediaDetails/MediaDetails";
 import classes from "./SearchResults.module.css";
+import { setEqualHeights } from "../../helpers/helpers";
 
 class SearchResults extends Component {
+  componentDidMount() {
+    setEqualHeights();
+
+    // ensure we set the heights again if the window is resized
+    window.addEventListener("resize", setEqualHeights);
+  }
   // sort by date descending
   sortFilms = films => {
     return films.sort(
