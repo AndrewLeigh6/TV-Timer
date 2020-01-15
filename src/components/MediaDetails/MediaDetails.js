@@ -19,7 +19,8 @@ const MediaDetails = props => {
 
 MediaDetails.propTypes = {
   title: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired
+  year: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired
 };
 
 export default MediaDetails;
