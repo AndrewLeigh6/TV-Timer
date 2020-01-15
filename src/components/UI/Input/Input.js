@@ -3,19 +3,34 @@ import PropTypes from "prop-types";
 import classes from "./Input.module.css";
 
 const Input = props => {
+  const styles = [classes.Input];
+
+  switch (props.class) {
+    case "search":
+      styles.push(classes.Search);
+      break;
+    case "time":
+      styles.push(classes.Time);
+      break;
+    default:
+      break;
+  }
+
   return (
     <input
-      className={classes.Input}
+      className={styles.join(" ")}
       type="text"
-      name="search"
-      id="search"
+      name={props.name}
+      id={props.name}
       placeholder={props.placeholder}
     />
   );
 };
 
 Input.propTypes = {
-  placeholder: PropTypes.string
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  class: PropTypes.oneOf(["search", "break", "time"]).isRequired
 };
 
 export default Input;
