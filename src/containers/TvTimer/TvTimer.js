@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Layout from "../../components/Layout/Layout";
 import MediaSelector from "../../components/MediaSelector/MediaSelector";
 import api from "../../api";
+import TimeCalculator from "../../components/TimeCalculator/TimeCalculator";
 
 class TvTimer extends Component {
   state = {
@@ -16,9 +17,14 @@ class TvTimer extends Component {
     });
 
     // temp for testing
-    api.findMedia("avengers").then(media => {
-      this.loadNewMedia(media);
-    });
+    api
+      .findMedia("avengers")
+      .then(media => {
+        this.loadNewMedia(media);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   loadNewMedia = media => {
@@ -51,11 +57,14 @@ class TvTimer extends Component {
   render() {
     return (
       <Layout>
+        {/*
         <MediaSelector
           searchHandler={this.searchHandler}
           media={this.state.media}
           getPosterBaseURL={this.getPosterBaseURL}
         />
+      */}
+        <TimeCalculator currentMedia={this.state.currentMedia} />
       </Layout>
     );
   }

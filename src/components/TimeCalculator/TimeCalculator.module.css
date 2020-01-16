@@ -1,0 +1,23 @@
+.TimeCalculator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.TimeCalculator hr {
+  margin: 9rem 0;
+  border: 1px solid #3b485e;
+}
+
+@media (max-width: 1200px) {
+  .TimeCalculator {
+    margin: 0 4rem;
+  }
+}
+
+.Container {
+  flex-flow: column;
+  margin-left: 10rem;
+}
