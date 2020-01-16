@@ -49,7 +49,7 @@ const Button = props => {
     default:
       return (
         <div className={getClasses()} onClick={props.clicked}>
-          {props.children}
+          {props.icon} {props.children}
         </div>
       );
   }
