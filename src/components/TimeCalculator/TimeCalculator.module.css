@@ -1,9 +1,24 @@
 .TimeCalculator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   max-width: 120rem;
   margin: 0 auto;
+  display: grid;
+  grid-row-gap: 5rem;
+  grid-template-areas:
+    "breaks breaks"
+    "media-details time-inputs";
+}
+
+.BreakInputContainer {
+  grid-area: breaks;
+}
+
+.MediaDetailsContainer {
+  grid-area: media-details;
+  justify-self: self-start;
+}
+
+.TimeInputContainer {
+  grid-area: time-inputs;
 }
 
 .TimeCalculator hr {
@@ -11,13 +26,7 @@
   border: 1px solid #3b485e;
 }
 
-@media (max-width: 1200px) {
-  .TimeCalculator {
-    margin: 0 4rem;
-  }
-}
-
-.Container {
+.TimeInputContainer {
   flex-flow: column;
   margin-left: 10rem;
 }
