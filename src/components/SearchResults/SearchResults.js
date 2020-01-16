@@ -27,9 +27,16 @@ class SearchResults extends Component {
         ? `${this.props.getPosterBaseURL()}/${media.poster_path}`
         : PLACEHOLDER_POSTER_URL;
       const year = media.release_date.slice(0, 4);
+      const BUTTON_TEXT = "Watch this";
 
       return (
-        <MediaDetails key={id} title={title} poster={poster} year={year} />
+        <MediaDetails
+          key={id}
+          title={title}
+          poster={poster}
+          year={year}
+          buttonText={BUTTON_TEXT}
+        />
       );
     });
   };

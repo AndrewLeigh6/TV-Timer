@@ -11,7 +11,7 @@ const MediaDetails = props => {
         {props.title} ({props.year})
       </p>
       <Button type="secondary" size="small">
-        Watch this
+        {props.buttonText}
       </Button>
     </div>
   );
@@ -20,7 +20,8 @@ const MediaDetails = props => {
 MediaDetails.propTypes = {
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired
+  poster: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired
 };
 
 export default MediaDetails;
