@@ -3,6 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import MediaSelector from "../../components/MediaSelector/MediaSelector";
 import api from "../../api";
 import TimeCalculator from "../../components/TimeCalculator/TimeCalculator";
+import { Route } from "react-router-dom";
 
 class TvTimer extends Component {
   state = {
@@ -57,14 +58,16 @@ class TvTimer extends Component {
   render() {
     return (
       <Layout>
-        {/*
-        <MediaSelector
-          searchHandler={this.searchHandler}
-          media={this.state.media}
-          getPosterBaseURL={this.getPosterBaseURL}
-        />
-      */}
-        <TimeCalculator currentMedia={this.state.currentMedia} />
+        <Route path="/" exact>
+          <MediaSelector
+            searchHandler={this.searchHandler}
+            media={this.state.media}
+            getPosterBaseURL={this.getPosterBaseURL}
+          />
+        </Route>
+        <Route path="/calculator">
+          <TimeCalculator currentMedia={this.state.currentMedia} />
+        </Route>
       </Layout>
     );
   }
