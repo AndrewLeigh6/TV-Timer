@@ -10,6 +10,11 @@ class SearchResults extends Component {
     // ensure we set the heights again if the window is resized
     window.addEventListener("resize", setEqualHeights);
   }
+
+  componentDidUpdate() {
+    setEqualHeights();
+  }
+
   // sort by date descending
   sortMedia = media => {
     return media.sort(
