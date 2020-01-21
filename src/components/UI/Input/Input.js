@@ -12,6 +12,9 @@ const Input = props => {
     case "time":
       styles.push(classes.Time);
       break;
+    case "break":
+      styles.push(classes.Break);
+      break;
     default:
       break;
   }
@@ -23,6 +26,7 @@ const Input = props => {
       name={props.name}
       id={props.name}
       placeholder={props.placeholder}
+      maxLength={props.maxLength}
     />
   );
 };

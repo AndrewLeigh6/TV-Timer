@@ -22,3 +22,15 @@
   padding: 1.5rem 0;
   width: auto;
 }
+
+.Break,
+.Break:focus {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f7fafc;
+  color: #f7fafc;
+  text-align: center;
+  font-size: 3.6rem;
+  max-width: 7.5rem;
+  outline: none;
+}
