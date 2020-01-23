@@ -41,6 +41,10 @@ class SearchResults extends Component {
           poster={poster}
           year={year}
           buttonText={BUTTON_TEXT}
+          setCurrentMediaHandler={this.props.setCurrentMediaHandler.bind(
+            this,
+            id
+          )}
         />
       );
     });

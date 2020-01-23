@@ -9,6 +9,7 @@ const MediaSelector = props => {
       <SearchResults
         media={props.media}
         getPosterBaseURL={props.getPosterBaseURL}
+        setCurrentMediaHandler={props.setCurrentMediaHandler}
       />
     </div>
   );

@@ -32,6 +32,14 @@ class TvTimer extends Component {
     this.setState({ media: media.data.results });
   };
 
+  setCurrentMediaHandler = mediaID => {
+    // put current film into state
+    const chosenMedia = this.state.media.find(
+      element => element.id === mediaID
+    );
+    this.setState({ currentMedia: chosenMedia });
+  };
+
   // https://developers.themoviedb.org/3/getting-started/images
   getPosterBaseURL = () => {
     if (this.state.config) {
@@ -63,6 +71,7 @@ class TvTimer extends Component {
             searchHandler={this.searchHandler}
             media={this.state.media}
             getPosterBaseURL={this.getPosterBaseURL}
+            setCurrentMediaHandler={this.setCurrentMediaHandler}
           />
         </Route>
         <Route path="/calculator">

@@ -10,7 +10,11 @@ const MediaDetails = props => {
       <p className={classes.Title}>
         {props.title} ({props.year})
       </p>
-      <Button type="secondary" size="small">
+      <Button
+        type="secondary"
+        size="small"
+        clicked={props.setCurrentMediaHandler}
+      >
         {props.buttonText}
       </Button>
     </div>
