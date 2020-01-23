@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import MediaSelector from "../../components/MediaSelector/MediaSelector";
 import api from "../../api";
 import TimeCalculator from "../../components/TimeCalculator/TimeCalculator";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 class TvTimer extends Component {
   state = {
@@ -37,7 +37,12 @@ class TvTimer extends Component {
     const chosenMedia = this.state.media.find(
       element => element.id === mediaID
     );
-    this.setState({ currentMedia: chosenMedia });
+
+    // need to wait until media has been set before redirecting
+    this.setState(
+      { currentMedia: chosenMedia },
+      this.props.history.push("/calculator")
+    );
   };
 
   // https://developers.themoviedb.org/3/getting-started/images
@@ -82,4 +87,4 @@ class TvTimer extends Component {
   }
 }
 
-export default TvTimer;
+export default withRouter(TvTimer);
