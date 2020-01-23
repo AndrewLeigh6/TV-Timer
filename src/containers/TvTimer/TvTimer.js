@@ -33,7 +33,6 @@ class TvTimer extends Component {
   };
 
   setCurrentMediaHandler = mediaID => {
-    // put current film into state
     const chosenMedia = this.state.media.find(
       element => element.id === mediaID
     );
@@ -80,7 +79,10 @@ class TvTimer extends Component {
           />
         </Route>
         <Route path="/calculator">
-          <TimeCalculator currentMedia={this.state.currentMedia} />
+          <TimeCalculator
+            currentMedia={this.state.currentMedia}
+            getPosterBaseURL={this.getPosterBaseURL}
+          />
         </Route>
       </Layout>
     );

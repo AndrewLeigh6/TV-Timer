@@ -4,17 +4,24 @@ import classes from "./MediaDetails.module.css";
 import Button from "../UI/Button/Button";
 
 const MediaDetails = props => {
+  const PLACEHOLDER_POSTER_URL =
+    "https://via.placeholder.com/500x750.png?text=No+poster+available";
+
+  const title = props.title;
+  const alt = props.title;
+  const poster = props.posterPath
+    ? `${props.getPosterBaseURL()}/${props.posterPath}`
+    : PLACEHOLDER_POSTER_URL;
+
+  const year = props.releaseDate.slice(0, 4);
+
   return (
     <div className={classes.MediaDetails}>
-      <img className={classes.Poster} src={props.poster} alt={props.alt} />
+      <img className={classes.Poster} src={poster} alt={alt} />
       <p className={classes.Title}>
-        {props.title} ({props.year})
+        {title} ({year})
       </p>
-      <Button
-        type="secondary"
-        size="small"
-        clicked={props.setCurrentMediaHandler}
-      >
+      <Button type="secondary" size="small" clicked={props.clicked}>
         {props.buttonText}
       </Button>
     </div>
@@ -23,8 +30,7 @@ const MediaDetails = props => {
 
 MediaDetails.propTypes = {
   title: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired
 };
 

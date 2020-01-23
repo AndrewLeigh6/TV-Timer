@@ -22,29 +22,19 @@ class SearchResults extends Component {
     );
   };
 
-  formatMedia = media => {
-    const PLACEHOLDER_POSTER_URL =
-      "https://via.placeholder.com/500x750.png?text=No+poster+available";
+  generateMedia = media => {
     return media.map(media => {
-      const id = media.id;
-      const title = media.title;
-      const poster = media.poster_path
-        ? `${this.props.getPosterBaseURL()}/${media.poster_path}`
-        : PLACEHOLDER_POSTER_URL;
-      const year = media.release_date.slice(0, 4);
       const BUTTON_TEXT = "Watch this";
 
       return (
         <MediaDetails
-          key={id}
-          title={title}
-          poster={poster}
-          year={year}
+          key={media.id}
+          title={media.title}
+          posterPath={media.poster_path}
+          releaseDate={media.release_date}
           buttonText={BUTTON_TEXT}
-          setCurrentMediaHandler={this.props.setCurrentMediaHandler.bind(
-            this,
-            id
-          )}
+          clicked={this.props.setCurrentMediaHandler.bind(this, media.id)}
+          getPosterBaseURL={this.props.getPosterBaseURL}
         />
       );
     });
@@ -52,7 +42,7 @@ class SearchResults extends Component {
 
   render() {
     const media = this.props.media
-      ? this.formatMedia(this.sortMedia(this.props.media))
+      ? this.generateMedia(this.sortMedia(this.props.media))
       : null;
 
     return <div className={classes.SearchResults}>{media}</div>;

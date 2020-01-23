@@ -3,9 +3,16 @@ import classes from "./TimeCalculator.module.css";
 import MediaDetails from "../MediaDetails/MediaDetails";
 import TimeInputBlock from "./TimeInputBlock/TimeInputBlock";
 import BreakInputBlock from "./BreakInputBlock/BreakInputBlock";
+import { withRouter } from "react-router-dom";
 
 const TimeCalculator = props => {
   const BUTTON_TEXT = "Go back";
+
+  if (props.currentMedia === null) {
+    props.history.push("/");
+    return null;
+  }
+
   return (
     <div className={classes.TimeCalculator}>
       <div className={classes.BreakInputContainer}>
@@ -13,10 +20,12 @@ const TimeCalculator = props => {
       </div>
       <div className={classes.MediaDetailsContainer}>
         <MediaDetails
-          title="Blade Runner 2049"
-          year="2017"
-          poster="https://via.placeholder.com/500x750.png?text=No+poster+available"
+          title={props.currentMedia.title}
+          releaseDate={props.currentMedia.release_date}
+          posterPath={props.currentMedia.poster_path}
           buttonText={BUTTON_TEXT}
+          getPosterBaseURL={props.getPosterBaseURL}
+          clicked={() => props.history.push("/")}
         />
       </div>
       <div className={classes.TimeInputContainer}>
@@ -28,4 +37,4 @@ const TimeCalculator = props => {
   );
 };
 
-export default TimeCalculator;
+export default withRouter(TimeCalculator);
