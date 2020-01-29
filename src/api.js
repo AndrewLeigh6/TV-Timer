@@ -37,12 +37,17 @@ api.getConfig = () => {
 };
 
 // https://developers.themoviedb.org/3/search/search-movies
-api.findMedia = query => {
+api.findFilms = query => {
   return api.get("/search/movie", {
     params: {
       query: query
     }
   });
+};
+
+// https://developers.themoviedb.org/3/movies/get-movie-details
+api.getFilmDetails = filmID => {
+  return api.get("/movie/" + filmID);
 };
 
 export default api;

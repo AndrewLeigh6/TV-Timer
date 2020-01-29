@@ -19,7 +19,7 @@ class TvTimer extends Component {
 
     // temp for testing
     api
-      .findMedia("avengers")
+      .findFilms("avengers")
       .then(media => {
         this.loadNewMedia(media);
       })
@@ -62,7 +62,7 @@ class TvTimer extends Component {
 
     const searchValue = event.target.elements[0].value;
 
-    api.findMedia(searchValue).then(media => {
+    api.findFilms(searchValue).then(media => {
       this.loadNewMedia(media);
     });
   };
