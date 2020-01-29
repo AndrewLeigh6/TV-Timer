@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./TimeCalculator.module.css";
 import MediaDetails from "../MediaDetails/MediaDetails";
 import TimeInputBlock from "./TimeInputBlock/TimeInputBlock";
 import BreakInputBlock from "./BreakInputBlock/BreakInputBlock";
 import { withRouter } from "react-router-dom";
+import api from "../../api";
 
 const TimeCalculator = props => {
   const BUTTON_TEXT = "Go back";
+  const [currentMediaDetails, setCurrentMediaDetailsState] = useState(null);
+  const [startTime, setStartTimeState] = useState("12:00");
+
+  useEffect(() => {
+    const mediaID = props.currentMedia.id;
+
+    api
+      .getFilmDetails(mediaID)
+      .then(res => setCurrentMediaDetailsState(res.data));
+  }, [props.currentMedia]);
 
   if (props.currentMedia === null) {
     props.history.push("/");
     return null;
   }
+
+  const setStartTimeHandler = event => {
+    const time = event.target.value;
+    setStartTimeState(time);
+  };
+
+  const calcFromStartTime = () => {
+    console.log("film duration is", currentMediaDetails.runtime);
+  };
 
   return (
     <div className={classes.TimeCalculator}>
@@ -29,7 +49,12 @@ const TimeCalculator = props => {
         />
       </div>
       <div className={classes.TimeInputContainer}>
-        <TimeInputBlock type="start" />
+        <TimeInputBlock
+          type="start"
+          changed={setStartTimeHandler}
+          clicked={calcFromStartTime}
+          time={startTime}
+        />
         <hr />
         <TimeInputBlock type="finish" />
       </div>

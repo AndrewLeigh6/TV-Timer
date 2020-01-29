@@ -31,7 +31,9 @@ const Input = props => {
         min="00:00"
         max="23:59"
         pattern="[0-9]{2}:[0-9]{2}"
-        required="true"
+        required={true}
+        onChange={props.changed}
+        value={props.value}
       />
     );
   }
