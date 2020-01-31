@@ -64,10 +64,9 @@ const TimeCalculator = props => {
     /* this looks absolutely hideous, but it's just so
     we can get the getMinutes result to look like 01, 02,
     etc instead of 1, 2. */
-    const chosenTimeString =
-      chosenTime.getHours() +
-      ":" +
-      String(chosenTime.getMinutes()).padStart(2, "0");
+    const paddedMinutes = String(chosenTime.getMinutes()).padStart(2, "0");
+
+    const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
 
     console.log("Your film will end at ", chosenTimeString);
   };
