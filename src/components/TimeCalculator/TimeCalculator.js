@@ -10,6 +10,7 @@ const TimeCalculator = props => {
   const BUTTON_TEXT = "Go back";
   const [currentMediaDetails, setCurrentMediaDetailsState] = useState(null);
   const [startTime, setStartTimeState] = useState("12:00");
+  const [endTime, setEndTimeState] = useState("12:00");
   const [breakLength, setBreakLengthState] = useState("5");
   const [breakNum, setBreakNumState] = useState("2");
 
@@ -29,6 +30,11 @@ const TimeCalculator = props => {
   const setStartTimeHandler = event => {
     const time = event.target.value;
     setStartTimeState(time);
+  };
+
+  const setEndTimeHandler = event => {
+    const time = event.target.value;
+    setEndTimeState(time);
   };
 
   const setBreakLengthHandler = event => {
@@ -71,6 +77,25 @@ const TimeCalculator = props => {
     console.log("Your film will end at ", chosenTimeString);
   };
 
+  const calcFromEndTime = () => {
+    const chosenTime = getTimeDate(endTime);
+
+    chosenTime.setMinutes(
+      chosenTime.getMinutes() -
+        currentMediaDetails.runtime +
+        breakLength * breakNum
+    );
+
+    /* this looks absolutely hideous, but it's just so
+    we can get the getMinutes result to look like 01, 02,
+    etc instead of 1, 2. */
+    const paddedMinutes = String(chosenTime.getMinutes()).padStart(2, "0");
+
+    const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
+
+    console.log("You should start your film at ", chosenTimeString);
+  };
+
   return (
     <div className={classes.TimeCalculator}>
       <div className={classes.BreakInputContainer}>
@@ -99,7 +124,12 @@ const TimeCalculator = props => {
           time={startTime}
         />
         <hr />
-        <TimeInputBlock type="finish" />
+        <TimeInputBlock
+          type="end"
+          changed={setEndTimeHandler}
+          clicked={calcFromEndTime}
+          time={endTime}
+        />
       </div>
     </div>
   );

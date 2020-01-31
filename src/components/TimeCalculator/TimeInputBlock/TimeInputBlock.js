@@ -11,7 +11,7 @@ const TimeInputBlock = props => {
     case "start":
       verb = "start";
       break;
-    case "finish":
+    case "end":
       verb = "finish";
       break;
     default:
@@ -37,7 +37,7 @@ const TimeInputBlock = props => {
 };
 
 TimeInputBlock.propTypes = {
-  type: PropTypes.oneOf(["start", "finish"]).isRequired
+  type: PropTypes.oneOf(["start", "end"]).isRequired
 };
 
 export default TimeInputBlock;
