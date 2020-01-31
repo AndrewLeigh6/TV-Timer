@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./BreakInputBlock.module.css";
 import Input from "../../UI/Input/Input";
 
-const BreakInputBlock = () => {
+const BreakInputBlock = props => {
   return (
     <div className={classes.BreakInputBlock}>
       <div className={classes.BreakLength}>
@@ -11,7 +11,8 @@ const BreakInputBlock = () => {
           name="break-length"
           class="break"
           maxLength="2"
-          placeholder="5"
+          value={props.breakLength}
+          changed={props.breakLengthChanged}
         />
       </div>
 
@@ -21,7 +22,8 @@ const BreakInputBlock = () => {
           name="break-number"
           class="break"
           maxLength="2"
-          placeholder="2"
+          value={props.breakNum}
+          changed={props.breakNumChanged}
         />
       </div>
     </div>

@@ -46,6 +46,8 @@ const Input = props => {
       id={props.name}
       placeholder={props.placeholder}
       maxLength={props.maxLength}
+      onChange={props.changed}
+      value={props.value}
     />
   );
 };

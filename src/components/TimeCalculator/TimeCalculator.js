@@ -10,6 +10,8 @@ const TimeCalculator = props => {
   const BUTTON_TEXT = "Go back";
   const [currentMediaDetails, setCurrentMediaDetailsState] = useState(null);
   const [startTime, setStartTimeState] = useState("12:00");
+  const [breakLength, setBreakLengthState] = useState("5");
+  const [breakNum, setBreakNumState] = useState("2");
 
   useEffect(() => {
     const mediaID = props.currentMedia.id;
@@ -29,6 +31,16 @@ const TimeCalculator = props => {
     setStartTimeState(time);
   };
 
+  const setBreakLengthHandler = event => {
+    const breakLength = event.target.value;
+    setBreakLengthState(breakLength);
+  };
+
+  const setBreakNumHandler = event => {
+    const breakNum = event.target.value;
+    setBreakNumState(breakNum);
+  };
+
   const getTimeDate = chosenTime => {
     const chosenTimeHours = chosenTime.slice(0, 2);
     const chosenTimeMinutes = chosenTime.slice(3);
@@ -44,7 +56,9 @@ const TimeCalculator = props => {
     const chosenTime = getTimeDate(startTime);
 
     chosenTime.setMinutes(
-      chosenTime.getMinutes() + currentMediaDetails.runtime
+      chosenTime.getMinutes() +
+        currentMediaDetails.runtime +
+        breakLength * breakNum
     );
 
     /* this looks absolutely hideous, but it's just so
@@ -61,7 +75,12 @@ const TimeCalculator = props => {
   return (
     <div className={classes.TimeCalculator}>
       <div className={classes.BreakInputContainer}>
-        <BreakInputBlock />
+        <BreakInputBlock
+          breakLength={breakLength}
+          breakLengthChanged={setBreakLengthHandler}
+          breakNum={breakNum}
+          breakNumChanged={setBreakNumHandler}
+        />
       </div>
       <div className={classes.MediaDetailsContainer}>
         <MediaDetails
