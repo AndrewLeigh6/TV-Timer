@@ -63,8 +63,7 @@ const TimeCalculator = props => {
 
     chosenTime.setMinutes(
       chosenTime.getMinutes() +
-        currentMediaDetails.runtime +
-        breakLength * breakNum
+        (currentMediaDetails.runtime + breakLength * breakNum)
     );
 
     /* this looks absolutely hideous, but it's just so
@@ -82,8 +81,7 @@ const TimeCalculator = props => {
 
     chosenTime.setMinutes(
       chosenTime.getMinutes() -
-        currentMediaDetails.runtime +
-        breakLength * breakNum
+        (currentMediaDetails.runtime + breakLength * breakNum)
     );
 
     /* this looks absolutely hideous, but it's just so
