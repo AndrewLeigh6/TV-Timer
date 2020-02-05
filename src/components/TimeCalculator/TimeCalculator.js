@@ -72,6 +72,8 @@ const TimeCalculator = props => {
     const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
 
     console.log("Your film will end at ", chosenTimeString);
+
+    props.history.push("/result");
   };
 
   const calcFromEndTime = () => {
@@ -87,6 +89,8 @@ const TimeCalculator = props => {
     const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
 
     console.log("You should start your film at ", chosenTimeString);
+
+    props.history.push("/result");
   };
 
   return (

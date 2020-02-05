@@ -3,13 +3,16 @@ import Layout from "../../components/Layout/Layout";
 import MediaSelector from "../../components/MediaSelector/MediaSelector";
 import api from "../../api";
 import TimeCalculator from "../../components/TimeCalculator/TimeCalculator";
+import FinalResult from "../../components/FinalResult/FinalResult";
 import { Route, withRouter } from "react-router-dom";
 
 class TvTimer extends Component {
   state = {
     config: null,
     media: null,
-    currentMedia: null
+    currentMedia: null,
+    endTime: null,
+    startTime: null
   };
 
   componentDidMount() {
@@ -83,6 +86,9 @@ class TvTimer extends Component {
             currentMedia={this.state.currentMedia}
             getPosterBaseURL={this.getPosterBaseURL}
           />
+        </Route>
+        <Route path="/result">
+          <FinalResult />
         </Route>
       </Layout>
     );

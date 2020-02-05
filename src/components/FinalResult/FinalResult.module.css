@@ -1,0 +1,23 @@
+.FinalResult {
+  color: #f7fafc;
+  font-size: 3.6rem;
+  min-height: 70vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.ChosenTime {
+  color: #ed8936;
+}
+
+.CalculatedTime {
+  color: #ed8936;
+  font-size: 7.2rem;
+  font-weight: 700;
+  transform: translateY(-75%);
+}
+
+.Title {
+  font-weight: 700;
+}
