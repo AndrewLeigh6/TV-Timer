@@ -5,6 +5,7 @@ import TimeInputBlock from "./TimeInputBlock/TimeInputBlock";
 import BreakInputBlock from "./BreakInputBlock/BreakInputBlock";
 import { withRouter } from "react-router-dom";
 import api from "../../api";
+import { padMinutes } from "../../helpers/helpers";
 
 const TimeCalculator = props => {
   const BUTTON_TEXT = "Go back";
@@ -66,10 +67,7 @@ const TimeCalculator = props => {
         (currentMediaDetails.runtime + breakLength * breakNum)
     );
 
-    /* this looks absolutely hideous, but it's just so
-    we can get the getMinutes result to look like 01, 02,
-    etc instead of 1, 2. */
-    const paddedMinutes = String(chosenTime.getMinutes()).padStart(2, "0");
+    const paddedMinutes = padMinutes(chosenTime.getMinutes());
 
     const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
 
@@ -84,10 +82,7 @@ const TimeCalculator = props => {
         (currentMediaDetails.runtime + breakLength * breakNum)
     );
 
-    /* this looks absolutely hideous, but it's just so
-    we can get the getMinutes result to look like 01, 02,
-    etc instead of 1, 2. */
-    const paddedMinutes = String(chosenTime.getMinutes()).padStart(2, "0");
+    const paddedMinutes = padMinutes(chosenTime.getMinutes());
 
     const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
 

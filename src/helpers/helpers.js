@@ -56,3 +56,12 @@ export const setEqualHeights = debounce(() => {
   setEqualTitleHeights();
   setEqualPosterHeights();
 }, 250);
+
+/* this looks absolutely hideous, but it's just so
+    we can get the getMinutes result to look like 01, 02,
+    etc instead of 1, 2. */
+export const padMinutes = minutes => {
+  const paddedMinutes = String(minutes).padStart(2, "0");
+
+  return paddedMinutes;
+};
