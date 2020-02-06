@@ -60,6 +60,16 @@ class TvTimer extends Component {
     return null;
   };
 
+  getBackdropBaseURL = () => {
+    if (this.state.config) {
+      const url = this.state.config.secure_base_url;
+      const size = this.state.config.backdrop_sizes[3]; // width original
+      const backdropURL = `${url}/${size}/`;
+
+      return backdropURL;
+    }
+  };
+
   searchHandler = event => {
     event.preventDefault();
 
@@ -71,8 +81,16 @@ class TvTimer extends Component {
   };
 
   render() {
+    const backdropPath = this.state.currentMedia
+      ? this.state.currentMedia.backdrop_path
+      : null;
+
     return (
-      <Layout>
+      <Layout
+        getBackdropBaseURL={this.getBackdropBaseURL}
+        backdropPath={backdropPath}
+        pathName={this.props.location.pathname}
+      >
         <Route path="/" exact>
           <MediaSelector
             searchHandler={this.searchHandler}

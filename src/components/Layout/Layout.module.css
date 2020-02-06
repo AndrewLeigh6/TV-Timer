@@ -1,7 +1,24 @@
 .Layout {
+  --backdrop: none;
+  --backdrop-display: none;
+
   background-color: #2d3748;
   min-height: 100vh;
   width: auto;
   text-align: center;
   padding-bottom: 5rem;
+}
+
+.Layout::after {
+  content: "";
+  display: var(--backdrop-display);
+  background-image: var(--backdrop);
+  background-position: center;
+  opacity: 0.2;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
