@@ -5,13 +5,11 @@ import TimeInputBlock from "./TimeInputBlock/TimeInputBlock";
 import BreakInputBlock from "./BreakInputBlock/BreakInputBlock";
 import { withRouter } from "react-router-dom";
 import api from "../../api";
-import { padMinutes } from "../../helpers/helpers";
+import { getTimeString } from "../../helpers/helpers";
 
 const TimeCalculator = props => {
   const BUTTON_TEXT = "Go back";
   const [currentMediaDetails, setCurrentMediaDetailsState] = useState(null);
-  const [startTime, setStartTimeState] = useState("12:00");
-  const [endTime, setEndTimeState] = useState("12:00");
   const [breakLength, setBreakLengthState] = useState("5");
   const [breakNum, setBreakNumState] = useState("2");
 
@@ -30,12 +28,12 @@ const TimeCalculator = props => {
 
   const setStartTimeHandler = event => {
     const time = event.target.value;
-    setStartTimeState(time);
+    props.setChosenStartTimeState(time);
   };
 
   const setEndTimeHandler = event => {
     const time = event.target.value;
-    setEndTimeState(time);
+    props.setChosenEndTimeState(time);
   };
 
   const setBreakLengthHandler = event => {
@@ -60,35 +58,33 @@ const TimeCalculator = props => {
   };
 
   const calcFromStartTime = () => {
-    const chosenTime = getTimeDate(startTime);
+    const chosenTime = getTimeDate(props.startTime);
 
     chosenTime.setMinutes(
       chosenTime.getMinutes() +
         (currentMediaDetails.runtime + breakLength * breakNum)
     );
 
-    const paddedMinutes = padMinutes(chosenTime.getMinutes());
-
-    const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
+    const chosenTimeString = getTimeString(chosenTime);
 
     console.log("Your film will end at ", chosenTimeString);
+    props.setCalculatedEndTimeState(chosenTimeString);
 
     props.history.push("/result");
   };
 
   const calcFromEndTime = () => {
-    const chosenTime = getTimeDate(endTime);
+    const chosenTime = getTimeDate(props.endTime);
 
     chosenTime.setMinutes(
       chosenTime.getMinutes() -
         (currentMediaDetails.runtime + breakLength * breakNum)
     );
 
-    const paddedMinutes = padMinutes(chosenTime.getMinutes());
-
-    const chosenTimeString = chosenTime.getHours() + ":" + paddedMinutes;
+    const chosenTimeString = getTimeString(chosenTime);
 
     console.log("You should start your film at ", chosenTimeString);
+    props.setCalculatedStartTimeState(chosenTimeString);
 
     props.history.push("/result");
   };
@@ -118,14 +114,14 @@ const TimeCalculator = props => {
           type="start"
           changed={setStartTimeHandler}
           clicked={calcFromStartTime}
-          time={startTime}
+          time={props.startTime}
         />
         <hr />
         <TimeInputBlock
           type="end"
           changed={setEndTimeHandler}
           clicked={calcFromEndTime}
-          time={endTime}
+          time={props.endTime}
         />
       </div>
     </div>

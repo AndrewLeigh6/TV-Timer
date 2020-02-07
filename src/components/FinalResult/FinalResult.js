@@ -1,17 +1,37 @@
 import React from "react";
 import classes from "./FinalResult.module.css";
 
-const FinalResult = () => {
+const FinalResult = props => {
+  let text = "";
+
+  if (props.calculatedStartTime) {
+    text = (
+      <React.Fragment>
+        <p>
+          To finish your film by
+          <span className={classes.ChosenTime}> {props.chosenEndTime}</span>,
+          start it at...
+        </p>
+        <p className={classes.CalculatedTime}> {props.calculatedStartTime}</p>
+      </React.Fragment>
+    );
+  } else {
+    text = (
+      <React.Fragment>
+        <p>
+          If you start your film at
+          <span className={classes.ChosenTime}> {props.chosenStartTime}</span>,
+          you'll finish it at...
+        </p>
+        <p className={classes.CalculatedTime}> {props.calculatedEndTime}</p>
+      </React.Fragment>
+    );
+  }
   return (
     <div className={classes.FinalResult}>
+      {text}
       <p>
-        To finish your film by <span className={classes.ChosenTime}>23:30</span>
-        , start it at...
-      </p>
-      <p className={classes.CalculatedTime}> 21:04</p>
-      <p>
-        {" "}
-        Enjoy watching <span className={classes.Title}>Avengers: Endgame!</span>
+        Enjoy watching <span className={classes.Title}>{props.title}!</span>
       </p>
     </div>
   );

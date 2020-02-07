@@ -11,8 +11,10 @@ class TvTimer extends Component {
     config: null,
     media: null,
     currentMedia: null,
-    endTime: null,
-    startTime: null
+    chosenStartTime: "12:00",
+    chosenEndTime: "12:00",
+    calculatedStartTime: null,
+    calculatedEndTime: null
   };
 
   componentDidMount() {
@@ -22,7 +24,7 @@ class TvTimer extends Component {
 
     // temp for testing
     api
-      .findFilms("avengers")
+      .findFilms("star wars")
       .then(media => {
         this.loadNewMedia(media);
       })
@@ -30,6 +32,22 @@ class TvTimer extends Component {
         console.log(err);
       });
   }
+
+  setChosenStartTimeState = startTime => {
+    this.setState({ chosenStartTime: startTime });
+  };
+
+  setChosenEndTimeState = endTime => {
+    this.setState({ chosenEndTime: endTime });
+  };
+
+  setCalculatedStartTimeState = startTime => {
+    this.setState({ calculatedStartTime: startTime });
+  };
+
+  setCalculatedEndTimeState = endTime => {
+    this.setState({ calculatedEndTime: endTime });
+  };
 
   loadNewMedia = media => {
     this.setState({ media: media.data.results });
@@ -85,6 +103,10 @@ class TvTimer extends Component {
       ? this.state.currentMedia.backdrop_path
       : null;
 
+    const title = this.state.currentMedia
+      ? this.state.currentMedia.title
+      : null;
+
     return (
       <Layout
         getBackdropBaseURL={this.getBackdropBaseURL}
@@ -103,10 +125,26 @@ class TvTimer extends Component {
           <TimeCalculator
             currentMedia={this.state.currentMedia}
             getPosterBaseURL={this.getPosterBaseURL}
+            startTime={this.state.chosenStartTime}
+            endTime={this.state.chosenEndTime}
+            setChosenStartTimeState={this.setChosenStartTimeState.bind(this)}
+            setChosenEndTimeState={this.setChosenEndTimeState.bind(this)}
+            setCalculatedEndTimeState={this.setCalculatedEndTimeState.bind(
+              this
+            )}
+            setCalculatedStartTimeState={this.setCalculatedStartTimeState.bind(
+              this
+            )}
           />
         </Route>
         <Route path="/result">
-          <FinalResult />
+          <FinalResult
+            title={title}
+            chosenStartTime={this.state.chosenStartTime}
+            chosenEndTime={this.state.chosenEndTime}
+            calculatedStartTime={this.state.calculatedStartTime}
+            calculatedEndTime={this.state.calculatedEndTime}
+          />
         </Route>
       </Layout>
     );

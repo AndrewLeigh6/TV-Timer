@@ -60,8 +60,15 @@ export const setEqualHeights = debounce(() => {
 /* this looks absolutely hideous, but it's just so
     we can get the getMinutes result to look like 01, 02,
     etc instead of 1, 2. */
-export const padMinutes = minutes => {
+const padMinutes = minutes => {
   const paddedMinutes = String(minutes).padStart(2, "0");
 
   return paddedMinutes;
+};
+
+export const getTimeString = time => {
+  const paddedMinutes = padMinutes(time.getMinutes());
+  const timeString = time.getHours() + ":" + paddedMinutes;
+
+  return timeString;
 };
