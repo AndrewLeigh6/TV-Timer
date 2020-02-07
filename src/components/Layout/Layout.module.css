@@ -7,6 +7,8 @@
   width: auto;
   text-align: center;
   padding-bottom: 5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .Layout::after {
@@ -21,4 +23,6 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
+  filter: grayscale(0.5);
 }
