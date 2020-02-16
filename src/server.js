@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const path = require("path");
 
 require("dotenv").config();
 const key = process.env.REACT_APP_API_KEY_BEARER;
+
+app.use(express.static(path.join(__dirname, "build")));
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -50,6 +53,10 @@ api.getFilmDetails = filmID => {
 /* ==========
 ROUTES
 =========== */
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 app.get("/api/config", (req, res) => {
   api
     .getConfig()
