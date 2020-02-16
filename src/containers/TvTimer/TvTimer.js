@@ -24,7 +24,7 @@ class TvTimer extends Component {
 
     // temp for testing
     api
-      .findFilms("star wars")
+      .findFilms("avengers")
       .then(media => {
         this.loadNewMedia(media);
       })
