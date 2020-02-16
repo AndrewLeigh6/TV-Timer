@@ -30,3 +30,18 @@
   flex-flow: column;
   margin-left: 10rem;
 }
+
+@media (max-width: 1250px) {
+  .TimeCalculator {
+    padding: 0 4rem;
+    grid-template-areas: "breaks" "time-inputs" "media-details";
+  }
+
+  .TimeInputContainer {
+    margin-left: 0;
+  }
+
+  .MediaDetailsContainer {
+    justify-self: center;
+  }
+}
