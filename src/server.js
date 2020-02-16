@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 const path = require("path");
+const PORT = process.env.PORT || 8080;
 
 require("dotenv").config();
 const key = process.env.REACT_APP_API_KEY_BEARER;
@@ -90,4 +91,4 @@ app.get("/api/film/:film", (req, res) => {
     });
 });
 
-app.listen(8080);
+app.listen(PORT);
