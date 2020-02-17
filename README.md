@@ -17,6 +17,8 @@ Issues that need solving:
 - Look into why films sometimes don't load posters
 - Add error boundaries
 - Get rid of console logs
+- Work on reducing the number of requests
+- Fix bug where if both a start and end time have been calculated, the calculated start time will always be shown on the final page 
 
 Extras:
 - Add icons to buttons
