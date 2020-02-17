@@ -10,10 +10,14 @@ const Layout = props => {
   /* set backdrop URL by updating css variable, 
     since we can't access ::after using js */
   useEffect(() => {
+    const layout = document.querySelector(".App > div");
+
     if (props.pathName === "/result") {
-      const layout = document.querySelector(".App > div");
       layout.style.setProperty(`--backdrop`, `url(${backdropURL})`);
       layout.style.setProperty(`--backdrop-display`, `block`);
+    } else {
+      layout.style.setProperty(`--backdrop`, `none`);
+      layout.style.setProperty(`--backdrop-display`, `none`);
     }
   });
 
