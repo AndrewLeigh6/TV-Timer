@@ -19,6 +19,7 @@ Issues that need solving:
 - Get rid of console logs
 - Work on reducing the number of requests
 - Fix bug where if both a start and end time have been calculated, the calculated start time will always be shown on the final page 
+- Make results page look better when there's only one result
 
 Extras:
 - Add icons to buttons
