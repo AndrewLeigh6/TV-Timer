@@ -58,6 +58,7 @@ const TimeCalculator = props => {
   };
 
   const calcFromStartTime = () => {
+    props.setCurrentCalculationType("end");
     const chosenTime = getTimeDate(props.startTime);
 
     chosenTime.setMinutes(
@@ -67,13 +68,14 @@ const TimeCalculator = props => {
 
     const chosenTimeString = getTimeString(chosenTime);
 
-    console.log("Your film will end at ", chosenTimeString);
+    //console.log("Your film will end at ", chosenTimeString);
     props.setCalculatedEndTimeState(chosenTimeString);
 
     props.history.push("/result");
   };
 
   const calcFromEndTime = () => {
+    props.setCurrentCalculationType("start");
     const chosenTime = getTimeDate(props.endTime);
 
     chosenTime.setMinutes(
@@ -83,7 +85,7 @@ const TimeCalculator = props => {
 
     const chosenTimeString = getTimeString(chosenTime);
 
-    console.log("You should start your film at ", chosenTimeString);
+    //console.log("You should start your film at ", chosenTimeString);
     props.setCalculatedStartTimeState(chosenTimeString);
 
     props.history.push("/result");

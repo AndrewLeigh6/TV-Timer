@@ -14,7 +14,8 @@ class TvTimer extends Component {
     chosenStartTime: "12:00",
     chosenEndTime: "12:00",
     calculatedStartTime: null,
-    calculatedEndTime: null
+    calculatedEndTime: null,
+    currentCalculationType: null
   };
 
   componentDidMount() {
@@ -47,6 +48,10 @@ class TvTimer extends Component {
 
   setCalculatedEndTimeState = endTime => {
     this.setState({ calculatedEndTime: endTime });
+  };
+
+  setCurrentCalculationType = type => {
+    this.setState({ currentCalculationType: type });
   };
 
   loadNewMedia = media => {
@@ -135,6 +140,9 @@ class TvTimer extends Component {
             setCalculatedStartTimeState={this.setCalculatedStartTimeState.bind(
               this
             )}
+            setCurrentCalculationType={this.setCurrentCalculationType.bind(
+              this
+            )}
           />
         </Route>
         <Route path="/result">
@@ -144,6 +152,7 @@ class TvTimer extends Component {
             chosenEndTime={this.state.chosenEndTime}
             calculatedStartTime={this.state.calculatedStartTime}
             calculatedEndTime={this.state.calculatedEndTime}
+            currentCalculationType={this.state.currentCalculationType}
           />
         </Route>
       </Layout>
