@@ -10,7 +10,6 @@ To get your own copy working, clone this repository, run npm install, and then n
 
 Issues that need solving:
 - Make the calculator page smaller
-- Remove backdrop if the user navigates back from final page
 - Add input labels
 - Add input validation
 - Make responsive
