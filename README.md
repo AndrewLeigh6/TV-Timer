@@ -1,6 +1,6 @@
 ## TV Timer
 
-An app that allows users to search for films, takes break number and duration inputs, and calculates either what time the film will finish at given a start time, or what time the user needs to start at in order to finish by a certain time. 
+An app that allows users to search for films, takes break number and duration inputs, and calculates either what time the film will finish at given a start time, or what time the user needs to start at in order to finish by a certain time.
 
 Features a React based front-end, an ExpressJS based back-end, and consumes The Movie Database API (https://developers.themoviedb.org/3/getting-started/introduction).
 
@@ -9,6 +9,7 @@ It can be found hosted at https://tv-timer.herokuapp.com/. Apparently, free Hero
 To get your own copy working, clone this repository, run npm install, npm run build, and then npm run server. You should find it working on http://localhost:8080/.
 
 Issues that need solving:
+
 - Make the calculator page smaller
 - Add input labels
 - Add input validation
@@ -18,10 +19,10 @@ Issues that need solving:
 - Add error boundaries
 - Get rid of console logs
 - Work on reducing the number of requests
-- Fix bug where if both a start and end time have been calculated, the calculated start time will always be shown on the final page 
 - Make results page look better when there's only one result
 
 Extras:
+
 - Add icons to buttons
 - Add option to toggle unpopular films
 - Add sorting options
