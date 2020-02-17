@@ -6,11 +6,10 @@ Features a React based front-end, an ExpressJS based back-end, and consumes The 
 
 It can be found hosted at https://tv-timer.herokuapp.com/. Apparently, free Heroku apps go to sleep after 30 minutes of inactivity, so it might be slow on the initial load.
 
-To get your own copy working, clone this repository, run npm install, and then npm run server. You should find it working on http://localhost:8080/.
+To get your own copy working, clone this repository, run npm install, npm run build, and then npm run server. You should find it working on http://localhost:8080/.
 
 Issues that need solving:
 - Make the calculator page smaller
-- Remove backdrop if the user navigates back from final page
 - Add input labels
 - Add input validation
 - Make responsive
@@ -18,6 +17,9 @@ Issues that need solving:
 - Look into why films sometimes don't load posters
 - Add error boundaries
 - Get rid of console logs
+- Work on reducing the number of requests
+- Fix bug where if both a start and end time have been calculated, the calculated start time will always be shown on the final page 
+- Make results page look better when there's only one result
 
 Extras:
 - Add icons to buttons
