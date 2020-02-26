@@ -25,11 +25,6 @@ const TimeCalculator = props => {
     }
   }, [props.currentMedia, props.history]);
 
-  if (props.currentMedia === null) {
-    props.history.push("/");
-    return null;
-  }
-
   const setStartTimeHandler = event => {
     const time = event.target.value;
     props.setChosenStartTimeState(time);
