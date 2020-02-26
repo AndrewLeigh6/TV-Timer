@@ -16,7 +16,6 @@ Issues that need solving:
 - Make responsive
 - Add powered by The Movie Database somewhere
 - Look into why films sometimes don't load posters
-- Add error boundaries
 - Get rid of console logs
 - Work on reducing the number of requests
 - Make results page look better when there's only one result
