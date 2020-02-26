@@ -14,12 +14,16 @@ const TimeCalculator = props => {
   const [breakNum, setBreakNumState] = useState("2");
 
   useEffect(() => {
-    const mediaID = props.currentMedia.id;
+    if (props.currentMedia === null) {
+      props.history.push("/");
+    } else {
+      const mediaID = props.currentMedia.id;
 
-    api
-      .getFilmDetails(mediaID)
-      .then(res => setCurrentMediaDetailsState(res.data));
-  }, [props.currentMedia]);
+      api
+        .getFilmDetails(mediaID)
+        .then(res => setCurrentMediaDetailsState(res.data));
+    }
+  }, [props.currentMedia, props.history]);
 
   if (props.currentMedia === null) {
     props.history.push("/");
