@@ -7,28 +7,28 @@ const PORT = process.env.PORT || 8080;
 require("dotenv").config();
 const key = process.env.REACT_APP_API_KEY_BEARER;
 
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "..", "build")));
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   headers: {
-    Authorization: `Bearer ${key}`
-  }
+    Authorization: `Bearer ${key}`,
+  },
 });
 
-api.interceptors.request.use(request => {
-  console.log("Starting Request", request);
+api.interceptors.request.use((request) => {
+  // console.log("Starting Request", request);
   request.params = {
     ...request.params,
     language: "en-US",
     include_adult: "false",
-    page: "1"
+    page: "1",
   };
   return request;
 });
 
-api.interceptors.response.use(response => {
-  console.log("Response:", response);
+api.interceptors.response.use((response) => {
+  // console.log("Response:", response);
   return response;
 });
 
@@ -38,33 +38,33 @@ api.getConfig = () => {
 };
 
 // https://developers.themoviedb.org/3/search/search-movies
-api.findFilms = query => {
+api.findFilms = (query) => {
   return api.get("/search/movie", {
     params: {
-      query: query
-    }
+      query: query,
+    },
   });
 };
 
 // https://developers.themoviedb.org/3/movies/get-movie-details
-api.getFilmDetails = filmID => {
+api.getFilmDetails = (filmID) => {
   return api.get("/movie/" + filmID);
 };
 
 /* ==========
 ROUTES
 =========== */
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+// });
 
 app.get("/api/config", (req, res) => {
   api
     .getConfig()
-    .then(results => {
+    .then((results) => {
       res.send(results.data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.send(err);
     });
 });
@@ -72,10 +72,10 @@ app.get("/api/config", (req, res) => {
 app.get("/api/search/film", (req, res) => {
   api
     .findFilms(req.query.search)
-    .then(results => {
+    .then((results) => {
       res.send(results.data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.send(err);
     });
 });
@@ -83,10 +83,10 @@ app.get("/api/search/film", (req, res) => {
 app.get("/api/film/:film", (req, res) => {
   api
     .getFilmDetails(req.params.film)
-    .then(results => {
+    .then((results) => {
       res.send(results.data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.send(err);
     });
 });
